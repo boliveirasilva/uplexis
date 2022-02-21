@@ -1,64 +1,69 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Projeto upLexis - Quest Multimarcas
 
-## About Laravel
+Esta aplicação recupera dados de uma loja virtual e armazena no banco de dados local.  
+Abaixo encontra-se descrito os requisitos da aplicação, bem como todo o processo de instalação da mesma.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Para auxiliar na instalação, as instruções mais comumente utilizadas via linha de comando são expostas como sugestão de uso. 
+Vale lembrar que cabe ao usuário adquirir um conhecimento mais aprofundado dos comandos envolvendo processos de terceiros e que há uma extensa documentação a respeito de todos esses comandos na internet. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Requisitos Mínimos
+- PHP 8
+- Laravel 9
+- MySQL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Instalação
 
-## Learning Laravel
+- Clone o repositório e acesse a pasta do projeto
+```bash
+$ git clone https://github.com/boliveirasilva/uplexis.git uplexis
+```
+- Renomeie uma cópia do arquivo .env.example para .env, e configure os dados de conexão com o banco. Aproveite para conferir se a URL da loja Quest Multimarcas está correta;
+```bash
+$ cp .env.example .env
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Execute a instalação das dependências do projeto;
+```bash
+$ composer install
+```
+- Gere a chave de segurança da aplicação;
+```bash
+$ php artisan key:generate
+````
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Crie o database do projeto;
+```mysql
+create database uplexis;
+```
 
-## Laravel Sponsors
+- Gere e popule as tabelas;
+```bash
+$ php artisan migrate --seed
+```
+- Se for necessário, ative o servidor web embutido do PHP para usar a aplicação (após a execução do comando, será informado o endereço de acesso à aplicação);
+```bash
+$ php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+### Login
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Segue abaixo o usuário e senha padrões da aplicação.  
 
-## Contributing
+**Usuário:** admin@admin.com  
+**Senha:** admin
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+### Utilização
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+O processo de utilização da aplicação é bastante simples.  
 
-## Security Vulnerabilities
+Imediatamente após realizar o login, o usuário será direcionado para a tela de listagem dos veículos cadastrados no banco.
+Inicialmente a tela não terá registros, bastando que o usuário siga para a tela de captura, através do link no menu superior.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Na tela de captura basta informar o termo a ser pesquisado na loja virtual.
+O processo de pesquisa retornará uma tabela informando quais veículos foram importados para o banco local.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+_Obs:_ veículos previamente importados são ignorados.
