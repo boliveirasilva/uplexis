@@ -24,7 +24,8 @@ return new class extends Migration
             $table->integer('quilometragem');
             $table->string('cambio');
             $table->string('cor');
-            $table->float('preco');
+            $table->string('image')->nullable();
+            $table->float('preco')->nullable();
             $table->timestamps();
         });
     }

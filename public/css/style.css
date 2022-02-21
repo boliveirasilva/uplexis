@@ -1,0 +1,46 @@
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*#message_card {*/
+/*    position: absolute;*/
+/*    right: 3%;*/
+/*    bottom: 0;*/
+/*}*/
+
+.table>:not(caption)>*>* {
+    padding: 0.25px 3px;
+}
+.sub-row {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    border-bottom: 1px solid #BEBEBE;
+    height: 2.5em;
+}
+.sub-row > * {
+    vertical-align: top;
+    padding: 0 !important;
+}
