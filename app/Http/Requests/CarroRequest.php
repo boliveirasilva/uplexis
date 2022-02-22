@@ -27,4 +27,12 @@ class CarroRequest extends FormRequest
             'search_term' => 'required|min:2'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'search_term.required' => 'Por favor informe um termo de pesquisa.',
+            'search_term.min' => 'O termo de pesquisa precisa conter ao menos 2 caracteres.'
+        ];
+    }
 }

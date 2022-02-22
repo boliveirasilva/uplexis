@@ -1,5 +1,17 @@
 @extends('layout')
 
+@section('flash-message')
+    @if($errors->any())
+        <div id="message_card" class="alert alert-danger alert-dismissible" role="alert">
+            <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+    @endif
+@endsection
+
 @section('container')
     <div class="py-3 text-center">
         <h2>Importação de Veículos</h2>
